@@ -35,7 +35,7 @@ function handleSubmit(event) {
   updateCartPreview();
 
 }
-
+var cart = [];
 // TODO (done): Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // TODO (done): suss out the item picked from the select list
@@ -47,19 +47,34 @@ function addSelectedItemToCart() {
     var quantityOfItem = getQuantity.value;
 
    cart.addItem(nameOfItem, quantityOfItem,);
-    
+  
 }
 
-// TODO: Update the cart count in the header nav with the number of items in the Cart
+var totalQuantity = 0;
+
+// TODO (done): Update the cart count in the header nav with the number of items in the Cart
 function updateCounter() {
-  var itemCart = document.getElementById('itemCount');
-  var cartList = document.createElement('li');
-  cartList.textContent = addSelectedItemToCart();
-  itemCart.appendChild(cartList);
+  for (var i = 0; i < cart.length; i++);
+  totalQuantity = totalQuantity + cart[i];
+  itemCount.textContent = totalQuantity;
+  console.log(cart[i]);
 }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
+  var getPreviewEl = document.getElementById('cartContents');
+  var cartPreview = document.createElement('ul')
+  
+  for (var i = 0; i < cart.length; i++) {
+    console.log(cart[i]);
+    var previewList = document.createElement('li');
+    previewList.textContent = `${cart[i].nameOfItem, cart[i].quantityOfItem}`;
+  cartPreview.appendChild(previewList);
+  }
+  getPreviewEl.appendChild(cartPreview);
+
+
+
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
 }
